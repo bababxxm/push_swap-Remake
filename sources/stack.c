@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 00:12:13 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/10 22:08:08 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/10 23:53:05 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,19 @@ void	stack_addback(t_stack **stack, t_stack *new)
 		*stack = new;
 	else if (*stack && new)
 		last_stack(*stack)->next = new;
+}
+
+int	stack_size(t_stack *stack)
+{
+	int	size;
+
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
 }
 
 t_stack	*new_stack(char *argv, long int value)

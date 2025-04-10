@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:28 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/10 22:05:10 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/10 23:56:30 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,5 @@ int	main(int argc, char *argv[])
 	t_stack	*b;
 
 	init_stack(&a, &b, argc, argv);
-	push_swap(&a, &b, RRR);
-	print_stacks(a, b);
 	clear_program(a, NULL, EXIT_SUCCESS);
 }
