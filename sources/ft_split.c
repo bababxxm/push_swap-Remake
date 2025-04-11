@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:58:46 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/10 21:53:50 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/11 10:04:28 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	**ft_split(char *s, char sep)
 			len = ft_split_strlen(s, sep);
 			split[idx] = ft_split_str(s, len);
 			if (!split[idx])
-				return (free_matrix_2D((void **)split), NULL);
+				return (free_matrix_2d((void **)split), NULL);
 			s += len - 1;
 			idx++;
 		}

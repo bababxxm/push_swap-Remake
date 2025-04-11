@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 00:05:35 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/11 04:50:37 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/11 10:14:48 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*ft_strdup(char *src)
 	return (dst);
 }
 
-void	free_matrix_2D(void **matrix)
+void	free_matrix_2d(void **matrix)
 {
 	int	index;
 
@@ -68,12 +68,12 @@ void	free_matrix_2D(void **matrix)
 	free(matrix);
 }
 
-bool	has_duplicates(t_stack *stack)
+bool	has_duplicates(t_stack *a)
 {
 	t_stack	*current;
 	t_stack	*checker;
 
-	current = stack;
+	current = a;
 	while (current)
 	{
 		checker = current->next;
@@ -116,11 +116,11 @@ void	put_action(t_action action)
 	else if (action == RR)
 		write(1, "rr\n", 3);
 	else if (action == RRA)
-		write(1, "rra\n", 3);
+		write(1, "rra\n", 4);
 	else if (action == RRB)
-		write(1, "rrb\n", 3);
+		write(1, "rrb\n", 4);
 	else if (action == RRR)
-		write(1, "rrr\n", 3);
+		write(1, "rrr\n", 4);
 }
 
 void	print_stacks(t_stacks *stack)

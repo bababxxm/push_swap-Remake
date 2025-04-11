@@ -6,28 +6,56 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:28 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/11 05:08:29 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/11 11:51:01 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	clear_program(t_stacks *stack, char **matrix, int exit_code)
+int	main(int argc, char *argv[])
 {
-	t_stack	*tmp;
+	t_stacks	stack;
 
-	while (stack->a)
+	init_stacks(&stack, argc, argv);
+	if (!is_sorted(stack.a))
 	{
-		tmp = stack->a;
-		stack->a = stack->a->next;
-		free(tmp->argv);
-		free(tmp);
+		if (stack.size <= 5)
+			tiny_sort(&stack);
+		else if (stack.size > 5)
+			chunk_sort(&stack);
 	}
-	if (matrix)
-		free_matrix_2D((void **)matrix);
-	if (exit_code == EXIT_FAILURE)
-		write(2, "Error\n", 6);
-	exit(exit_code);
+	print_stacks(&stack);
+	// if (is_sorted(stack.a))
+	// 	printf("sorted\n");
+	clear_program(&stack, NULL, EXIT_SUCCESS);
+}
+
+void	init_stacks(t_stacks *stack, int argc, char *argv[])
+{
+	int		i;
+	int		j;
+	char	**tmp;
+
+	if (argc < 2)
+		exit(EXIT_FAILURE);
+	i = 0;
+	stack->a = NULL;
+	stack->b = NULL;
+	while (argv[++i])
+	{
+		if (!*argv[i])
+			clear_program(stack, NULL, EXIT_FAILURE);
+		j = -1;
+		tmp = ft_split(argv[i], ' ');
+		while (tmp[++j])
+			stack_addback(&stack->a, new_stack(\
+				ft_strdup(tmp[j]), ft_atol(tmp[j])));
+		free_matrix_2d((void **)tmp);
+	}
+	if (!parser(stack->a))
+		clear_program(stack, "Error", EXIT_FAILURE);
+	stack->size = stack_size(stack->a);
+	assign_sorted_index(stack->a);
 }
 
 bool	parser(t_stack *a)
@@ -75,47 +103,22 @@ void	assign_sorted_index(t_stack *a)
 	}
 }
 
-void	init_stacks(t_stacks *stack, int argc, char *argv[])
+void	clear_program(t_stacks *stack, char *str, int exit_code)
 {
-	int		i;
-	int		j;
-	char	**tmp;
+	t_stack	*tmp;
 
-	if (argc < 2)
-		exit(EXIT_FAILURE);
-	i = 0;
-	stack->a = NULL;
-	stack->b = NULL;
-	while (argv[++i])
+	while (stack->a)
 	{
-		if (!*argv[i])
-			clear_program(stack, NULL, EXIT_FAILURE);
-		j = -1;
-		tmp = ft_split(argv[i], ' ');
-		while (tmp[++j])
-			stack_addback(&stack->a, new_stack( \
-				ft_strdup(tmp[j]), ft_atol(tmp[j])));
-		free_matrix_2D((void **)tmp);
+		tmp = stack->a;
+		stack->a = stack->a->next;
+		free(tmp->argv);
+		free(tmp);
 	}
-	if (!parser(stack->a))
-		clear_program(stack, NULL, EXIT_FAILURE);
-	stack->size = stack_size(stack->a);
-	assign_sorted_index(stack->a);
-}
-
-
-int	main(int argc, char *argv[])
-{
-	t_stacks	stack;
-
-	init_stacks(&stack, argc, argv);
-	if (!is_sorted(stack.a))
+	if (exit_code == EXIT_FAILURE)
 	{
-		if (stack.size <= 5)
-			tiny_sort(&stack);
-		// else if (stack.size > 5)
-		// 	butterfly_sort(&stack);
+		while (*str)
+			write(2, str++, 1);
+		write(2, "\n", 1);
 	}
-	print_stacks(&stack);
-	clear_program(&stack, NULL, EXIT_SUCCESS);
+	exit(exit_code);
 }
