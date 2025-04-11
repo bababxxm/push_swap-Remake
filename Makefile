@@ -6,7 +6,7 @@
 #    By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/10 23:28:32 by sklaokli          #+#    #+#              #
-#    Updated: 2025/04/10 23:29:33 by sklaokli         ###   ########.fr        #
+#    Updated: 2025/04/11 00:39:43 by sklaokli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ INC_DIR		:=	include
 
 ## Source files
 SRC			:=	$(addprefix $(SRC_DIR)/, $(FILES))
-FILES		:=	main.c ft_split.c stack.c action.c utils.c
+FILES		:=	main.c ft_split.c stack.c action.c utils.c \
+				tiny.c butterfly.c
 
 ## Include files
 INC			:=	-I $(INC_DIR)

@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 00:05:35 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/10 23:51:54 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/11 04:50:37 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,22 @@ void	free_matrix_2D(void **matrix)
 	free(matrix);
 }
 
-bool	has_duplicates(t_stack *stack, int value)
+bool	has_duplicates(t_stack *stack)
 {
-	while (stack)
+	t_stack	*current;
+	t_stack	*checker;
+
+	current = stack;
+	while (current)
 	{
-		if (stack->value == value)
-			return (true);
-		stack = stack->next;
+		checker = current->next;
+		while (checker)
+		{
+			if (current->value == checker->value)
+				return (true);
+			checker = checker->next;
+		}
+		current = current->next;
 	}
 	return (false);
 }
@@ -90,17 +99,45 @@ bool	is_sorted(t_stack *a)
 	return (true);
 }
 
-void	print_stacks(t_stack *a, t_stack *b)
+void	put_action(t_action action)
 {
-	while (a)
+	if (action == SA)
+		write(1, "sa\n", 3);
+	else if (action == SB)
+		write(1, "sb\n", 3);
+	else if (action == PA)
+		write(1, "pa\n", 3);
+	else if (action == PB)
+		write(1, "pb\n", 3);
+	else if (action == RA)
+		write(1, "ra\n", 3);
+	else if (action == RB)
+		write(1, "rb\n", 3);
+	else if (action == RR)
+		write(1, "rr\n", 3);
+	else if (action == RRA)
+		write(1, "rra\n", 3);
+	else if (action == RRB)
+		write(1, "rrb\n", 3);
+	else if (action == RRR)
+		write(1, "rrr\n", 3);
+}
+
+void	print_stacks(t_stacks *stack)
+{
+	while (stack->a)
 	{
-		printf("%ld\n", a->value);
-		a = a->next;
+		printf("%u: %ld\n", stack->a->index, stack->a->value);
+		stack->a = stack->a->next;
 	}
+	if (!stack->a)
+		printf("NULL\n");
 	printf("------------------------------\n");
-	while (b)
+	while (stack->b)
 	{
-		printf("%ld\n", b->value);
-		b = b->next;
+		printf("%u: %ld\n", stack->b->index, stack->b->value);
+		stack->b = stack->b->next;
 	}
+	if (!stack->b)
+		printf("NULL\n");
 }

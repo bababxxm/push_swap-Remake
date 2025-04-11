@@ -6,20 +6,20 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:28 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/10 23:56:30 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/11 05:08:29 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	clear_program(t_stack *a, char **matrix, int exit_code)
+void	clear_program(t_stacks *stack, char **matrix, int exit_code)
 {
 	t_stack	*tmp;
 
-	while (a)
+	while (stack->a)
 	{
-		tmp = a;
-		a = a->next;
+		tmp = stack->a;
+		stack->a = stack->a->next;
 		free(tmp->argv);
 		free(tmp);
 	}
@@ -34,7 +34,11 @@ bool	parser(t_stack *a)
 {
 	while (a)
 	{
-		if (a->value == 0)
+		if (a->value < INT_MIN || a->value > INT_MAX)
+			return (false);
+		else if (has_duplicates(a))
+			return (false);
+		else if (a->value == 0)
 		{
 			if (a->argv[0] == '0' && a->argv[1] == '\0')
 				return (true);
@@ -44,16 +48,34 @@ bool	parser(t_stack *a)
 			else
 				return (false);
 		}
-		// else if (has_duplicates(a, a->value))
-		// 	return (false);
-		else if (a->value < INT_MIN || a->value > INT_MAX)
-			return (false);
 		a = a->next;
 	}
 	return (true);
 }
 
-void	init_stack(t_stack **a, t_stack **b, int argc, char *argv[])
+void	assign_sorted_index(t_stack *a)
+{
+	int		index;
+	t_stack	*current;
+	t_stack	*compare;
+
+	current = a;
+	while (current)
+	{
+		index = 1;
+		compare = a;
+		while (compare)
+		{
+			if (compare->value < current->value)
+				index++;
+			compare = compare->next;
+		}
+		current->index = index;
+		current = current->next;
+	}
+}
+
+void	init_stacks(t_stacks *stack, int argc, char *argv[])
 {
 	int		i;
 	int		j;
@@ -62,29 +84,38 @@ void	init_stack(t_stack **a, t_stack **b, int argc, char *argv[])
 	if (argc < 2)
 		exit(EXIT_FAILURE);
 	i = 0;
-	*a = NULL;
-	*b = NULL;
+	stack->a = NULL;
+	stack->b = NULL;
 	while (argv[++i])
 	{
 		if (!*argv[i])
-			clear_program(*a, NULL, EXIT_FAILURE);
+			clear_program(stack, NULL, EXIT_FAILURE);
 		j = -1;
 		tmp = ft_split(argv[i], ' ');
 		while (tmp[++j])
-			stack_addback(a, new_stack( \
+			stack_addback(&stack->a, new_stack( \
 				ft_strdup(tmp[j]), ft_atol(tmp[j])));
 		free_matrix_2D((void **)tmp);
 	}
-	if (!parser(*a))
-		clear_program(*a, NULL, EXIT_FAILURE);
+	if (!parser(stack->a))
+		clear_program(stack, NULL, EXIT_FAILURE);
+	stack->size = stack_size(stack->a);
+	assign_sorted_index(stack->a);
 }
 
 
 int	main(int argc, char *argv[])
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_stacks	stack;
 
-	init_stack(&a, &b, argc, argv);
-	clear_program(a, NULL, EXIT_SUCCESS);
+	init_stacks(&stack, argc, argv);
+	if (!is_sorted(stack.a))
+	{
+		if (stack.size <= 5)
+			tiny_sort(&stack);
+		// else if (stack.size > 5)
+		// 	butterfly_sort(&stack);
+	}
+	print_stacks(&stack);
+	clear_program(&stack, NULL, EXIT_SUCCESS);
 }
