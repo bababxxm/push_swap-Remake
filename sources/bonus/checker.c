@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 14:05:15 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 15:03:27 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:25:26 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char *argv[])
 	while (action)
 	{
 		execute_action(&stack, action);
-		printf("%s", action);
 		free(action);
 		action = get_next_line(0);
 	}

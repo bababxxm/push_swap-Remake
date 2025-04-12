@@ -6,11 +6,17 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 19:11:24 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 14:18:59 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:29:32 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+int		gnl_strlen(char *s);
+int		gnl_newline_found(char *line);
+char	*gnl_strdup(char *s);
+char	*gnl_substr(char *s, int start, int len);
+char	*gnl_strjoin(char *buffer, char *tmp);
 
 char	*get_leftover(char *buffer)
 {

@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:28 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 15:03:33 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:25:36 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	clear_program(t_stacks *stack, char *str, int exit_code)
 		free(tmp->argv);
 		free(tmp);
 	}
-	if (exit_code == EXIT_FAILURE)
+	if (str)
 	{
 		while (*str)
 			write(2, str++, 1);

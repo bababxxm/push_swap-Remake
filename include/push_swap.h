@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:31 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 15:00:27 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:30:46 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <limits.h>
+# include <fcntl.h>
 
-# include "get_next_line.h"
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
 typedef enum e_action
 {
@@ -57,8 +60,6 @@ typedef struct s_stacks
 	unsigned int	size;
 }	t_stacks;
 
-# include "checker.h"
-
 void		init_stacks(t_stacks *stack, int argc, char *argv[]);
 bool		parser(t_stack *a);
 bool		has_duplicates(t_stack *a);
@@ -88,6 +89,9 @@ void		sort_four(t_stack **a, t_stack **b);
 void		sort_five(t_stack **a, t_stack **b);
 void		tiny_sort(t_stacks *stack);
 void		butterfly_sort(t_stacks *stack);
+
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+void		execute_action(t_stacks *stack, char *action);
 
 long		ft_atol(char *ptr);
 char		*ft_strdup(char *src);

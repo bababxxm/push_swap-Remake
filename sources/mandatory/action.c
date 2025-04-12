@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 20:44:11 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 14:55:51 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:11:05 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void	rev_rotate(t_stack **a, t_stack **b, t_action action)
 
 void	push_swap(t_stack **a, t_stack **b, t_action action, bool checker)
 {
-	if (checker)
+	if (!checker)
 		print_action(action);
 	if (action == SA || action == SB)
 		swap(a, b, action);
