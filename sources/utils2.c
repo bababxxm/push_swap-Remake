@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 09:28:27 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/11 12:01:41 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 10:30:04 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_stack	*find_max(t_stack *stack)
 	return (max);
 }
 
-int	find_target(t_stack **stack, t_stack *target)
+int	find_position(t_stack **stack, t_stack *target)
 {
 	int		pos;
 	t_stack	*tmp;
@@ -61,32 +61,28 @@ int	find_target(t_stack **stack, t_stack *target)
 
 void	bring_to_top(t_stack **stack, t_stack *target, t_stack_id id)
 {
-	int	pos;
-	int	size;
-
-	size = stack_size(*stack);
-	pos = find_target(stack, target);
-	if (pos > size / 2)
+	if (find_position(stack, target) > stack_size(*stack) / 2)
 	{
-		while (pos++ <= size)
+		while (*stack && (*stack) != target)
 		{
 			if (id == A)
 				push_swap(stack, NULL, RRA);
 			else if (id == B)
-				push_swap(stack, NULL, RRB);
+				push_swap(NULL, stack, RRB);
 		}
 	}
 	else
 	{
-		while (--pos)
+		while (*stack && (*stack) != target)
 		{
 			if (id == A)
 				push_swap(stack, NULL, RA);
 			else if (id == B)
-				push_swap(stack, NULL, RB);
+				push_swap(NULL, stack, RB);
 		}
 	}
 }
+
 
 int ft_log2(int n)
 {
@@ -96,21 +92,4 @@ int ft_log2(int n)
     while (n >>= 1)
         log++;
     return (log);
-}
-
-t_stack	*top(t_stack *stack)
-{
-	return (stack);
-}
-
-t_stack	*bottom(t_stack *stack)
-{
-	return (last_stack(stack));
-}
-
-bool	is_in_chunk(int index, int start, int end)
-{
-	if (index >= start && index <= end)
-		return (true);
-	return (false);
 }

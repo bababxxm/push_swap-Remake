@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:28 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/11 11:51:01 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 09:34:32 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,8 @@ int	main(int argc, char *argv[])
 		if (stack.size <= 5)
 			tiny_sort(&stack);
 		else if (stack.size > 5)
-			chunk_sort(&stack);
+			butterfly_sort(&stack);
 	}
-	print_stacks(&stack);
-	// if (is_sorted(stack.a))
-	// 	printf("sorted\n");
 	clear_program(&stack, NULL, EXIT_SUCCESS);
 }
 

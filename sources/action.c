@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 20:44:11 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/11 10:44:51 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 10:52:35 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	rotate(t_stack **a, t_stack **b, t_action action)
 			tmp = last_stack(*a);
 			tmp->next = *a;
 			*a = (*a)->next;
+			tmp->next->next = NULL;
 		}
 	}
 	if (action == RB || action == RR)
@@ -84,9 +85,9 @@ void	rotate(t_stack **a, t_stack **b, t_action action)
 			tmp = last_stack(*b);
 			tmp->next = *b;
 			*b = (*b)->next;
+			tmp->next->next = NULL;
 		}
 	}
-	tmp->next->next = NULL;
 }
 
 void	rev_rotate(t_stack **a, t_stack **b, t_action action)

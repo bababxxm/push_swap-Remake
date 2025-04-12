@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:31 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/11 12:02:17 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 10:39:34 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ typedef struct s_stacks
  * 
  * @param stack  Pointer to the stacks structure.
  */
-void	print_stacks(t_stacks *stack);
+void	print_stacks(t_stack *a, t_stack *b);
 
 /**
  * Initializes the stack structure from command-line arguments.
@@ -245,11 +245,10 @@ void	sort_three(t_stack **a, t_stack **b);
 t_stack	*find_min(t_stack *stack);
 t_stack	*find_max(t_stack *stack);
 void	bring_to_top(t_stack **stack, t_stack *target, t_stack_id id);
+void	butterfly_sort(t_stacks *stack);
 int ft_log2(int n);
-void	chunk_sort(t_stacks *stack);
-bool	is_in_chunk(int index, int start, int end);
-t_stack	*top(t_stack *stack);
-t_stack	*bottom(t_stack *stack);
+void	bring_to_top(t_stack **stack, t_stack *target, t_stack_id id);
+int	find_position(t_stack **stack, t_stack *target);
 
 /**
  * Converts a string to a long integer.

@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 00:05:35 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/11 10:14:48 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 10:53:17 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,23 +121,4 @@ void	put_action(t_action action)
 		write(1, "rrb\n", 4);
 	else if (action == RRR)
 		write(1, "rrr\n", 4);
-}
-
-void	print_stacks(t_stacks *stack)
-{
-	while (stack->a)
-	{
-		printf("%u: %ld\n", stack->a->index, stack->a->value);
-		stack->a = stack->a->next;
-	}
-	if (!stack->a)
-		printf("NULL\n");
-	printf("------------------------------\n");
-	while (stack->b)
-	{
-		printf("%u: %ld\n", stack->b->index, stack->b->value);
-		stack->b = stack->b->next;
-	}
-	if (!stack->b)
-		printf("NULL\n");
 }
