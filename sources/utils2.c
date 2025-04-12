@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 09:28:27 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 10:30:04 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 11:07:43 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_stack	*find_min(t_stack *stack)
 {
-	t_stack *min;
-	t_stack *current;
+	t_stack	*min;
+	t_stack	*current;
 
 	min = stack;
 	current = stack;
@@ -30,8 +30,8 @@ t_stack	*find_min(t_stack *stack)
 
 t_stack	*find_max(t_stack *stack)
 {
-	t_stack *max;
-	t_stack *current;
+	t_stack	*max;
+	t_stack	*current;
 
 	max = stack;
 	current = stack;
@@ -44,24 +44,24 @@ t_stack	*find_max(t_stack *stack)
 	return (max);
 }
 
-int	find_position(t_stack **stack, t_stack *target)
+int	find_position(t_stack *stack, t_stack *target)
 {
 	int		pos;
-	t_stack	*tmp;
+	t_stack	*current;
 
 	pos = 1;
-	tmp = *stack;
-	while (tmp && tmp != target)
+	current = stack;
+	while (current && current != target)
 	{
 		pos++;
-		tmp = tmp->next;
+		current = current->next;
 	}
 	return (pos);
 }
 
 void	bring_to_top(t_stack **stack, t_stack *target, t_stack_id id)
 {
-	if (find_position(stack, target) > stack_size(*stack) / 2)
+	if (find_position(*stack, target) > stack_size(*stack) / 2)
 	{
 		while (*stack && (*stack) != target)
 		{
@@ -81,15 +81,4 @@ void	bring_to_top(t_stack **stack, t_stack *target, t_stack_id id)
 				push_swap(NULL, stack, RB);
 		}
 	}
-}
-
-
-int ft_log2(int n)
-{
-    int log;
-
-	log = 0;
-    while (n >>= 1)
-        log++;
-    return (log);
 }
