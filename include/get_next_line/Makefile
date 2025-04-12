@@ -5,25 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/04/10 23:28:32 by sklaokli          #+#    #+#              #
-#    Updated: 2025/04/12 12:10:31 by sklaokli         ###   ########.fr        #
+#    Created: 2024/11/18 19:44:55 by sklaokli          #+#    #+#              #
+#    Updated: 2025/04/12 12:01:53 by sklaokli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ## Libraries
-NAME		:=	push_swap
-GNL			:=	get_next_line
+NAME		:=	get_next_line
 
 ## Paths to files
 SRC_DIR		:=	sources
 OBJ_DIR		:=	objects
 INC_DIR		:=	include
-GNL_DIR		:=	$(addprefix $(INC_DIR)/, get_next_line)
 
 ## Source files
 SRC			:=	$(addprefix $(SRC_DIR)/, $(FILES))
-FILES		:=	main.c ft_split.c stack.c utils.c \
-				action.c tiny.c butterfly.c sort.c
+FILES		:=	get_next_line.c get_next_line_utils.c
 
 ## Include files
 INC			:=	-I $(INC_DIR)
@@ -59,20 +56,15 @@ $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 
 all:		$(NAME)
 
-$(NAME):	$(GNL) $(OBJ) Makefile
-			@ $(CC) $(FLAGS) $(OBJ) $(INC) -o $(NAME)
+$(NAME):	$(OBJ) Makefile
+			@ $(LIBC) $(NAME) $(OBJ)
 			@ echo "$(GREEN)Done! $(NAME) is now ready.$(RESET)"
 
-$(GNL):		Makefile
-			@ $(MAKE) -sC $(GNL_DIR)
-
 clean:
-			@ $(MAKE) -sC $(GNL_DIR) clean
 			@ $(RM) -rf $(OBJ_DIR)
 			@ echo "$(CYAN)All $(NAME) object files have been cleaned.$(RESET)"
 
 fclean:
-			@ $(MAKE) -sC $(GNL_DIR) fclean
 			@ $(RM) -rf $(OBJ_DIR) $(NAME)
 			@ echo "$(CYAN)All $(NAME) executable files have been cleaned.$(RESET)"
 
