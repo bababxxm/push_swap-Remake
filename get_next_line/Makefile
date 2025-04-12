@@ -6,7 +6,7 @@
 #    By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/10 23:28:32 by sklaokli          #+#    #+#              #
-#    Updated: 2025/04/12 15:38:17 by sklaokli         ###   ########.fr        #
+#    Updated: 2025/04/12 16:12:51 by sklaokli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,10 +58,7 @@ all:			$(NAME)
 
 $(NAME):		$(OBJ) Makefile
 				@ $(LIBC) $(NAME) $(OBJ)
-				@ echo "$(GREEN)Done! $(NAME) is now ready.$(RESET)"
-
-bonus:
-				cc -I $(INC_DIR) sources/*.c -o checker
+				@ echo "$(GREEN)[OK] $(NAME) built succesfully.$(RESET)"
 
 clean:
 				@ $(RM) -rf $(OBJ_DIR)
