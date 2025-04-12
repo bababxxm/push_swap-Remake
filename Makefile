@@ -6,7 +6,7 @@
 #    By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/10 23:28:32 by sklaokli          #+#    #+#              #
-#    Updated: 2025/04/12 09:31:47 by sklaokli         ###   ########.fr        #
+#    Updated: 2025/04/12 11:52:13 by sklaokli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ INC_DIR		:=	include
 
 ## Source files
 SRC			:=	$(addprefix $(SRC_DIR)/, $(FILES))
-FILES		:=	main.c ft_split.c stack.c action.c utils.c \
-				tiny.c butterfly.c utils2.c
+FILES		:=	main.c ft_split.c stack.c utils.c \
+				action.c tiny.c butterfly.c sort.c
 
 ## Include files
 INC			:=	-I $(INC_DIR)
@@ -37,7 +37,7 @@ TOTAL_FILES	:=	$(words $(OBJ))
 RM			:=	rm -f
 CC			:=	cc
 LIBC		:=	ar rcs
-FLAGS		:=	-Wall -Wextra -Werror
+FLAGS		:=	
 
 ## Color Codes
 CYAN		:=	\033[0;36m

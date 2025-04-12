@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   sort.c.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 09:28:27 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 11:07:43 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 11:51:18 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+bool	is_sorted(t_stack *a)
+{
+	while (a && a->next)
+	{
+		if (a->value > a->next->value)
+			return (false);
+		a = a->next;
+	}
+	return (true);
+}
 
 t_stack	*find_min(t_stack *stack)
 {

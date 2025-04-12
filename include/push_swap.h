@@ -6,14 +6,13 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:31 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 11:07:36 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 11:51:34 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
@@ -71,20 +70,19 @@ void		rotate(t_stack **a, t_stack **b, t_action action);
 void		rev_rotate(t_stack **a, t_stack **b, t_action action);
 void		push_swap(t_stack **a, t_stack **b, t_action action);
 
+bool		is_sorted(t_stack *a);
 void		tiny_sort(t_stacks *stack);
 void		sort_three(t_stack **a, t_stack **b);
 t_stack		*find_min(t_stack *stack);
 t_stack		*find_max(t_stack *stack);
+int			find_position(t_stack *stack, t_stack *target);
 void		bring_to_top(t_stack **stack, t_stack *target, t_stack_id id);
 void		butterfly_sort(t_stacks *stack);
+void		put_action(t_action action);
 
-int			find_position(t_stack *stack, t_stack *target);
 long		ft_atol(char *ptr);
 char		*ft_strdup(char *src);
 char		**ft_split(char *s, char sep);
 void		free_matrix_2d(void **matrix);
-
-bool		is_sorted(t_stack *a);
-void		put_action(t_action action);
 
 #endif

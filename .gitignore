@@ -1,4 +1,6 @@
 objects
 push_swap
 checker_linux
+visualizer
+tester.sh
 .vscode

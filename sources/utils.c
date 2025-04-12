@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 00:05:35 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 10:53:17 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 11:51:12 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,17 +86,6 @@ bool	has_duplicates(t_stack *a)
 		current = current->next;
 	}
 	return (false);
-}
-
-bool	is_sorted(t_stack *a)
-{
-	while (a && a->next)
-	{
-		if (a->value > a->next->value)
-			return (false);
-		a = a->next;
-	}
-	return (true);
 }
 
 void	put_action(t_action action)

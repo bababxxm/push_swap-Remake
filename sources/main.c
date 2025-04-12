@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:28 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 09:34:32 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 11:46:21 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	init_stacks(t_stacks *stack, int argc, char *argv[])
 	while (argv[++i])
 	{
 		if (!*argv[i])
-			clear_program(stack, NULL, EXIT_FAILURE);
+			clear_program(stack, "Error", EXIT_FAILURE);
 		j = -1;
 		tmp = ft_split(argv[i], ' ');
 		while (tmp[++j])
