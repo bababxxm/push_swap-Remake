@@ -6,24 +6,17 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:31 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 15:30:46 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:32:29 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
-
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <limits.h>
-# include <fcntl.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
 
 typedef enum e_action
 {
