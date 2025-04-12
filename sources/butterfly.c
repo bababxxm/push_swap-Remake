@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 00:16:17 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 11:07:27 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:01:04 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	sort_butterfly(t_stack **a, t_stack **b)
 	while (*b)
 	{
 		bring_to_top(b, find_max(*b), B);
-		push_swap(a, b, PA);
+		push_swap(a, b, PA, false);
 	}
 }
 
@@ -30,17 +30,17 @@ void	do_butterfly(t_stack **a, t_stack **b, int size)
 	{
 		if ((int)(*a)->index <= counter)
 		{
-			push_swap(a, b, PB);
-			push_swap(a, b, RB);
+			push_swap(a, b, PB, false);
+			push_swap(a, b, RB, false);
 			counter++;
 		}
 		else if ((int)(*a)->index <= counter + size)
 		{
-			push_swap(a, b, PB);
+			push_swap(a, b, PB, false);
 			counter++;
 		}
 		else
-			push_swap(a, b, RA);
+			push_swap(a, b, RA, false);
 	}
 }
 

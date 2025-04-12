@@ -1,8 +1,10 @@
 objects
 push_swap
+checker
 checker_linux
 visualizer
 tester.sh
 .vscode
 0
 traces.txt
+imgui.ini

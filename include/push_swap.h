@@ -6,23 +6,21 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:31 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 12:40:37 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:00:27 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <stdio.h>
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <limits.h>
 
-# include "get_next_line/include/get_next_line.h"
-
-# ifndef CHECKER
-#  define CHECKER 0
-# endif
+# include "get_next_line.h"
 
 typedef enum e_action
 {
@@ -59,6 +57,8 @@ typedef struct s_stacks
 	unsigned int	size;
 }	t_stacks;
 
+# include "checker.h"
+
 void		init_stacks(t_stacks *stack, int argc, char *argv[]);
 bool		parser(t_stack *a);
 bool		has_duplicates(t_stack *a);
@@ -74,17 +74,20 @@ void		swap(t_stack **a, t_stack **b, t_action action);
 void		push(t_stack **a, t_stack **b, t_action action);
 void		rotate(t_stack **a, t_stack **b, t_action action);
 void		rev_rotate(t_stack **a, t_stack **b, t_action action);
-void		push_swap(t_stack **a, t_stack **b, t_action action);
+void		push_swap(t_stack **a, t_stack **b, t_action action, bool checker);
 
 bool		is_sorted(t_stack *a);
-void		tiny_sort(t_stacks *stack);
-void		sort_three(t_stack **a, t_stack **b);
+void		print_action(t_action action);
 t_stack		*find_min(t_stack *stack);
 t_stack		*find_max(t_stack *stack);
 int			find_position(t_stack *stack, t_stack *target);
 void		bring_to_top(t_stack **stack, t_stack *target, t_stack_id id);
+void		sort_two(t_stack **a, t_stack **b);
+void		sort_three(t_stack **a, t_stack **b);
+void		sort_four(t_stack **a, t_stack **b);
+void		sort_five(t_stack **a, t_stack **b);
+void		tiny_sort(t_stacks *stack);
 void		butterfly_sort(t_stacks *stack);
-void		put_action(t_action action);
 
 long		ft_atol(char *ptr);
 char		*ft_strdup(char *src);

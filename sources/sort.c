@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c.c                                           :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 09:28:27 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 11:51:18 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:01:35 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ void	bring_to_top(t_stack **stack, t_stack *target, t_stack_id id)
 		while (*stack && (*stack) != target)
 		{
 			if (id == A)
-				push_swap(stack, NULL, RRA);
+				push_swap(stack, NULL, RRA, false);
 			else if (id == B)
-				push_swap(NULL, stack, RRB);
+				push_swap(NULL, stack, RRB, false);
 		}
 	}
 	else
@@ -87,9 +87,9 @@ void	bring_to_top(t_stack **stack, t_stack *target, t_stack_id id)
 		while (*stack && (*stack) != target)
 		{
 			if (id == A)
-				push_swap(stack, NULL, RA);
+				push_swap(stack, NULL, RA, false);
 			else if (id == B)
-				push_swap(NULL, stack, RB);
+				push_swap(NULL, stack, RB, false);
 		}
 	}
 }

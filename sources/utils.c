@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 00:05:35 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 11:51:12 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:02:18 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ bool	has_duplicates(t_stack *a)
 	return (false);
 }
 
-void	put_action(t_action action)
+void	print_action(t_action action)
 {
 	if (action == SA)
 		write(1, "sa\n", 3);
