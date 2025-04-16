@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:20:37 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/16 15:42:32 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:23:30 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_stacks(t_stacks *stack, int argc, char *argv[])
 	i = 0;
 	stack->a = NULL;
 	stack->b = NULL;
+	stack->action = NULL;
 	while (argv[++i])
 	{
 		if (!*argv[i])
@@ -107,14 +108,21 @@ void	assign_sorted_index(t_stack *a)
 
 void	clear_program(t_stacks *stack, char *str, int exit_code)
 {
-	t_stack	*tmp;
+	t_stack	*tmp1;
+	t_list	*tmp2;
 
 	while (stack->a)
 	{
-		tmp = stack->a;
+		tmp1 = stack->a;
 		stack->a = stack->a->next;
-		free(tmp->argv);
-		free(tmp);
+		free(tmp1->argv);
+		free(tmp1);
+	}
+	while (stack->action)
+	{
+		tmp2 = stack->action;
+		stack->action = stack->action->next;
+		free(tmp2);
 	}
 	if (str)
 	{

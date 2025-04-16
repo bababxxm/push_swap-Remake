@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:31 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/16 15:42:13 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:26:03 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef enum e_stack_id
 typedef struct s_list
 {
 	struct s_list	*next;
-	void			*content;
+	t_action		value;
 }	t_list;
 
 typedef struct s_stack
@@ -59,6 +59,7 @@ typedef struct s_stacks
 	t_stack			*a;
 	t_stack			*b;
 	unsigned int	size;
+	t_list			*action;
 }	t_stacks;
 
 void		init_stacks(t_stacks *stack, int argc, char *argv[]);
@@ -67,7 +68,7 @@ bool		has_duplicates(t_stack *a);
 void		assign_sorted_index(t_stack *a);
 void		clear_program(t_stacks *stack, char *str, int exit_code);
 
-t_list		*new_list(void *content);
+t_list		*new_list(t_action action);
 t_stack		*new_stack(char *argv, long int value);
 int			list_size(void *list);
 void		*last_node(void *list);
@@ -92,12 +93,13 @@ void		sort_five(t_stack **a, t_stack **b);
 void		tiny_sort(t_stacks *stack);
 void		butterfly_sort(t_stacks *stack);
 
-int			ft_strncmp(const char *s1, const char *s2, size_t n);
-void		execute_action(t_stacks *stack, char *action);
-
 long		ft_atol(char *ptr);
 char		*ft_strdup(char *src);
 char		**ft_split(char *s, char sep);
 void		free_matrix_2d(void **matrix);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+
+void		read_action(t_list **action, char *input);
+void		execute_actions(t_stacks *stack, t_list *action);
 
 #endif

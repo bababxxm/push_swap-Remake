@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 00:12:13 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/16 15:58:49 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:25:10 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ int	list_size(void *list)
 	return (size);
 }
 
-t_list	*new_list(void *content)
+t_list	*new_list(t_action action)
 {
 	t_list	*new;
 
-	new = malloc(sizeof(t_action));
+	new = malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
-	new->content = content;
+	new->value = action;
 	new->next = NULL;
 	return (new);
 }
