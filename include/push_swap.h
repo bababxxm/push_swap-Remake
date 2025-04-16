@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:31 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/16 17:26:03 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/16 21:02:55 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void		free_matrix_2d(void **matrix);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 
 void		read_action(t_list **action, char *input);
+void		merge_actions(t_list *current, t_list *next);
 void		execute_actions(t_stacks *stack, t_list *action);
 
 #endif

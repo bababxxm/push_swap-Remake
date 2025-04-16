@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 14:05:15 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/16 17:36:32 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/16 21:03:16 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,27 +56,32 @@ void	read_action(t_list **action, char *input)
 		node_addback((void **)action, new_list(RRR));
 }
 
+void	merge_actions(t_list *current, t_list *next)
+{
+	if (next)
+	{
+		if ((current->value == RA && next->value == RB) \
+			|| (current->value == RB && next->value == RA))
+		{
+			current->value = RR;
+			current->next = next->next;
+			free(next);
+		}
+		else if ((current->value == RRA && next->value == RRB) \
+			|| (current->value == RRB && next->value == RRA))
+		{
+			current->value = RRR;
+			current->next = next->next;
+			free(next);
+		}
+	}
+}
+
 void	execute_actions(t_stacks *stack, t_list *action)
 {
-	t_list	*tmp;
-
 	while (action)
 	{
-		tmp = action->next;
-		if (tmp && ((action->value == RA && tmp->value == RB) \
-			|| (action->value == RB && tmp->value == RA)))
-		{
-			action->value = RR;
-			action->next = tmp->next;
-			free(tmp);
-		}
-		else if (tmp && ((action->value == RRA && tmp->value == RRB) \
-			|| (action->value == RRB && tmp->value == RRA)))
-		{
-			action->value = RRR;
-			action->next = tmp->next;
-			free(tmp);
-		}
+		merge_actions(action, action->next);
 		push_swap(&stack->a, &stack->b, action->value, true);
 		action = action->next;
 	}
