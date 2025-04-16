@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:31 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 16:09:37 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:08:00 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdbool.h>
 # include <limits.h>
 
-# include "include/get_next_line/include/get_next_line.h"
+# include "get_next_line.h"
 
 typedef enum e_action
 {

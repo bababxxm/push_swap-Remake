@@ -11,9 +11,9 @@
 # **************************************************************************** #
 
 ## Libraries
-NAME		:=	push_swap
-CHECKER		:=	checker
-GNL			:=	get_next_line
+NAME		=	push_swap
+CHECKER		=	checker
+GNL			=	$(GNL_DIR)/get_next_line
 
 ## Paths to files
 SRC_DIR		:=	sources
@@ -22,23 +22,26 @@ INC_DIR		:=	include
 GNL_DIR		:=	get_next_line
 
 ## Subdirectories
-MANDA_DIR	=	mandatory
-BONUS_DIR	=	bonus
+MANDA_DIR	:=	mandatory
+BONUS_DIR	:=	bonus
+UTILS_DIR	:=	utils
 
 ## Source files
-FILES_MANDA	:=	main.c ft_split.c stack.c utils.c \
+MANDA_FILES	:=	main.c
+BONUS_FILES	:=	checker.c
+UTILS_FILES	:=	init.c ft_split.c stack.c utils.c \
 				action.c tiny.c butterfly.c sort.c
-FILES_BONUS	:=	checker.c
 
-SRC_MANDA	:=	$(addprefix $(SRC_DIR)/$(MANDA_DIR)/, $(FILES_MANDA))
-SRC_BONUS	:=	$(addprefix $(SRC_DIR)/$(BONUS_DIR)/, $(FILES_BONUS))
+SRC_MANDA	:=	$(addprefix $(SRC_DIR)/$(MANDA_DIR)/, $(MANDA_FILES))
+SRC_BONUS	:=	$(addprefix $(SRC_DIR)/$(BONUS_DIR)/, $(BONUS_FILES))
+SRC_UTILS	:=	$(addprefix $(SRC_DIR)/$(UTILS_DIR)/, $(UTILS_FILES))
 
-OBJ_MANDA	:=	$(addprefix $(OBJ_DIR)/, $(FILES_MANDA:.c=.o))
-OBJ_BONUS	:=	$(addprefix $(OBJ_DIR)/, $(FILES_BONUS:.c=.o))
+OBJ_MANDA	:=	$(addprefix $(OBJ_DIR)/$(MANDA_DIR)/, $(MANDA_FILES:.c=.o))
+OBJ_BONUS	:=	$(addprefix $(OBJ_DIR)/$(BONUS_DIR)/, $(BONUS_FILES:.c=.o))
+OBJ_UTILS	:=	$(addprefix $(OBJ_DIR)/$(UTILS_DIR)/, $(UTILS_FILES:.c=.o))
 
 ## Include
-INC			:=	-I $(INC_DIR)
-GNL_INC		:=	-I $(GNL_DIR)/include
+INC			:=	-I $(INC_DIR) -I $(GNL_DIR)/include
 
 ## Counters for progress
 COMPILED	:=	0
@@ -58,7 +61,7 @@ YELLOW		:=	\033[0;33m
 RESET		:=	\033[0m
 
 ## Compilation rule
-$(OBJ_DIR)/%.o: $(SRC_DIR)/*/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 				@ mkdir -p $(dir $@)
 				@ $(eval COMPILED=$(shell echo $$(($(COMPILED)+1))))
 				@ PERCENT=$$(($(COMPILED)*100/$(TOTAL_FILES))); \
@@ -68,16 +71,16 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/*/%.c
 ## Targets
 all: 			$(NAME)
 
-$(NAME):		$(OBJ_MANDA)
-				@ $(CC) $(FLAGS) $(OBJ_MANDA) $(INC) -o $(NAME)
+$(NAME):		Makefile $(OBJ_UTILS) $(OBJ_MANDA)
+				@ $(CC) $(FLAGS) $(OBJ_UTILS) $(OBJ_MANDA) $(INC) -o $(NAME)
 				@ echo "$(GREEN)[OK] $(NAME) built succesfully.$(RESET)"
 
-bonus:			$(OBJ_MANDA) $(GNL) $(OBJ_BONUS)
-				@ $(CC) $(FLAGS) $(OBJ_MANDA) $(OBJ_BONUS) $(GNL_DIR)/$(GNL) $(INC) $(GNL_INC) -o $(CHECKER)
+bonus:			Makefile $(GNL) $(OBJ_UTILS) $(OBJ_BONUS)
+				@ $(CC) $(FLAGS) $(OBJ_UTILS) $(OBJ_BONUS) $(GNL) $(INC) -o $(CHECKER)
 				@ echo "$(GREEN)[OK] $(CHECKER) built succesfully.$(RESET)"
 
-$(GNL):
-				@ $(MAKE) -C $(GNL_DIR)
+$(GNL):			Makefile
+				@ $(MAKE) -sC $(GNL_DIR)
 
 clean:
 				@ $(MAKE) -sC $(GNL_DIR) clean
