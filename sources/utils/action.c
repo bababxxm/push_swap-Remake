@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   action.c                                           :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 20:44:11 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 15:11:05 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:15:43 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	rotate(t_stack **a, t_stack **b, t_action action)
 	{
 		if (*a && (*a)->next)
 		{
-			tmp = last_stack(*a);
+			tmp = last_node(*a);
 			tmp->next = *a;
 			*a = (*a)->next;
 			tmp->next->next = NULL;
@@ -82,7 +82,7 @@ void	rotate(t_stack **a, t_stack **b, t_action action)
 	{
 		if (*b && (*b)->next)
 		{
-			tmp = last_stack(*b);
+			tmp = last_node(*b);
 			tmp->next = *b;
 			*b = (*b)->next;
 			tmp->next->next = NULL;

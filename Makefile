@@ -29,8 +29,8 @@ UTILS_DIR	:=	utils
 ## Source files
 MANDA_FILES	:=	main.c
 BONUS_FILES	:=	checker.c
-UTILS_FILES	:=	init.c ft_split.c stack.c utils.c \
-				action.c tiny.c butterfly.c sort.c
+UTILS_FILES	:=	init.c ft_split.c list.c action.c \
+				tiny.c butterfly.c sort.c utils.c
 
 SRC_MANDA	:=	$(addprefix $(SRC_DIR)/$(MANDA_DIR)/, $(MANDA_FILES))
 SRC_BONUS	:=	$(addprefix $(SRC_DIR)/$(BONUS_DIR)/, $(BONUS_FILES))
@@ -45,7 +45,7 @@ INC			:=	-I $(INC_DIR) -I $(GNL_DIR)/include
 
 ## Counters for progress
 COMPILED	:=	0
-TOTAL_FILES	:=	$(words $(OBJ_MANDA) $(OBJ_BONUS))
+TOTAL_FILES	:=	$(words $(OBJ_UTILS) $(OBJ_MANDA))
 
 ## Commands
 RM			:=	rm -f
@@ -94,4 +94,4 @@ fclean:			clean
 
 re:				fclean all
 
-.PHONY:			all clean fclean re bonus
+.PHONY:			all bonus clean fclean re

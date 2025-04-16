@@ -1,43 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 00:12:13 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/11 10:54:55 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:58:49 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*last_stack(t_stack *stack)
+void	*last_node(void *list)
 {
-	while (stack && stack->next)
-		stack = stack->next;
-	return (stack);
+	t_list	*tmp;
+
+	tmp = (t_list *)list;
+	while (tmp && tmp->next)
+		tmp = tmp->next;
+	return (tmp);
 }
 
-void	stack_addback(t_stack **stack, t_stack *new)
+void	node_addback(void **list, void *new)
 {
-	if (!*stack && new)
-		*stack = new;
-	else if (*stack && new)
-		last_stack(*stack)->next = new;
+	t_list	**tmp;
+
+	tmp = (t_list **)list;
+	if (!*tmp && new)
+		*tmp = new;
+	else if (*tmp && new)
+		((t_list *)last_node(*tmp))->next = new;
 }
 
-int	stack_size(t_stack *stack)
+int	list_size(void *list)
 {
-	int	size;
+	int		size;
+	t_list	*tmp;
 
 	size = 0;
-	while (stack)
+	tmp = (t_list *)list;
+	while (tmp)
 	{
 		size++;
-		stack = stack->next;
+		tmp = tmp->next;
 	}
 	return (size);
+}
+
+t_list	*new_list(void *content)
+{
+	t_list	*new;
+
+	new = malloc(sizeof(t_action));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
 
 t_stack	*new_stack(char *argv, long int value)

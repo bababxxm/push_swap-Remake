@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:31 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/16 14:08:00 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:42:13 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,18 @@ typedef enum e_stack_id
 	B
 }	t_stack_id;
 
+typedef struct s_list
+{
+	struct s_list	*next;
+	void			*content;
+}	t_list;
+
 typedef struct s_stack
 {
+	struct s_stack	*next;
 	char			*argv;
 	unsigned int	index;
 	long int		value;
-	struct s_stack	*next;
 }	t_stack;
 
 typedef struct s_stacks
@@ -61,10 +67,11 @@ bool		has_duplicates(t_stack *a);
 void		assign_sorted_index(t_stack *a);
 void		clear_program(t_stacks *stack, char *str, int exit_code);
 
+t_list		*new_list(void *content);
 t_stack		*new_stack(char *argv, long int value);
-int			stack_size(t_stack *stack);
-t_stack		*last_stack(t_stack *stack);
-void		stack_addback(t_stack **stack, t_stack *new);
+int			list_size(void *list);
+void		*last_node(void *list);
+void		node_addback(void **list, void *new);
 
 void		swap(t_stack **a, t_stack **b, t_action action);
 void		push(t_stack **a, t_stack **b, t_action action);

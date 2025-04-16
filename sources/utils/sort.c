@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 09:28:27 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 15:01:35 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:16:28 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	find_position(t_stack *stack, t_stack *target)
 
 void	bring_to_top(t_stack **stack, t_stack *target, t_stack_id id)
 {
-	if (find_position(*stack, target) > stack_size(*stack) / 2)
+	if (find_position(*stack, target) > list_size(*stack) / 2)
 	{
 		while (*stack && (*stack) != target)
 		{

@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:20:37 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/16 15:02:00 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:42:32 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void	init_stacks(t_stacks *stack, int argc, char *argv[])
 		j = -1;
 		tmp = ft_split(argv[i], ' ');
 		while (tmp[++j])
-			stack_addback(&stack->a, new_stack(\
+			node_addback((void **)&stack->a, new_stack(\
 				ft_strdup(tmp[j]), ft_atol(tmp[j])));
 		free_matrix_2d((void **)tmp);
 	}
 	if (!parser(stack->a))
 		clear_program(stack, "Error", EXIT_FAILURE);
-	stack->size = stack_size(stack->a);
+	stack->size = list_size(stack->a);
 	assign_sorted_index(stack->a);
 }
 
