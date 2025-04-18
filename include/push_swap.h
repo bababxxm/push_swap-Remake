@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:31 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/19 02:10:24 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/19 03:06:02 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef enum e_stack_id
 typedef struct s_list
 {
 	struct s_list	*next;
-	t_action		value;
+	void			*content;
 }	t_list;
 
 typedef struct s_stack
@@ -59,7 +59,6 @@ typedef struct s_stacks
 	t_stack			*a;
 	t_stack			*b;
 	unsigned int	size;
-	t_list			*action;
 }	t_stacks;
 
 void		init_stacks(t_stacks *stack, int argc, char *argv[]);
