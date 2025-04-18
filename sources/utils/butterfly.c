@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 00:16:17 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/16 15:02:47 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/19 02:46:01 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,24 @@ void	do_butterfly(t_stack **a, t_stack **b, int size)
 	}
 }
 
-int	get_butterfy_size(t_stacks *stack)
+int	get_butterfy_size(int size)
 {
-	if (stack->size <= 100)
-		return (stack->size / 5);
-	return (stack->size / 11);
+	if (size < 50)
+		return (3 + (size - 6) / 7);
+	else if (size >= 50 && size < 100)
+		return (10 + (size - 50) / 8);
+	else if (size >= 100 && size < 350)
+		return (18 + (size - 100) / 9);
+	else if (size >= 350 && size <= 500)
+		return (27 + (size - 350) / 15);
+	return (37 + (size - 500) / 20);
 }
 
 void	butterfly_sort(t_stacks *stack)
 {
 	int	size;
 
-	size = get_butterfy_size(stack);
+	size = get_butterfy_size(stack->size);
 	do_butterfly(&stack->a, &stack->b, size);
 	sort_butterfly(&stack->a, &stack->b);
 }
