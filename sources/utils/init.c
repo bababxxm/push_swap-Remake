@@ -6,13 +6,13 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:20:37 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/19 03:18:07 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/19 03:24:49 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_stacks(t_stacks *stack, int argc, char *argv[])
+void	init_stack(t_data *stack, int argc, char *argv[])
 {
 	int		i;
 	int		j;
@@ -105,7 +105,7 @@ void	assign_sorted_index(t_stack *a)
 	}
 }
 
-void	clear_program(t_stacks *stack, char *str, int exit_code)
+void	clear_program(t_data *stack, char *str, int exit_code)
 {
 	t_stack	*tmp;
 

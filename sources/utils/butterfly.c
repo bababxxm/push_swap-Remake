@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 00:16:17 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/19 02:58:38 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/19 03:24:49 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	get_butterfy_size(int size)
 	return (37 + (size - 500) / 20);
 }
 
-void	butterfly_sort(t_stacks *stack)
+void	butterfly_sort(t_data *stack)
 {
 	int	size;
 

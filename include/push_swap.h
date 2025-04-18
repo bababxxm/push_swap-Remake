@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:31 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/19 03:06:02 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/19 03:24:49 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,18 @@ typedef struct s_stack
 	long int		value;
 }	t_stack;
 
-typedef struct s_stacks
+typedef struct s_data
 {
 	t_stack			*a;
 	t_stack			*b;
 	unsigned int	size;
-}	t_stacks;
+}	t_data;
 
-void		init_stacks(t_stacks *stack, int argc, char *argv[]);
+void		init_stack(t_data *stack, int argc, char *argv[]);
 bool		parser(t_stack *a);
 bool		has_duplicates(t_stack *a);
 void		assign_sorted_index(t_stack *a);
-void		clear_program(t_stacks *stack, char *str, int exit_code);
+void		clear_program(t_data *stack, char *str, int exit_code);
 
 t_list		*new_list(t_action action);
 t_stack		*new_stack(char *argv, long int value);
@@ -89,8 +89,8 @@ void		sort_two(t_stack **a, t_stack **b);
 void		sort_three(t_stack **a, t_stack **b);
 void		sort_four(t_stack **a, t_stack **b);
 void		sort_five(t_stack **a, t_stack **b);
-void		tiny_sort(t_stacks *stack);
-void		butterfly_sort(t_stacks *stack);
+void		tiny_sort(t_data *stack);
+void		butterfly_sort(t_data *stack);
 
 long		ft_atol(char *ptr);
 char		*ft_strdup(char *src);
@@ -98,6 +98,6 @@ char		**ft_split(char *s, char sep);
 void		free_matrix_2d(void **matrix);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 
-void		execute_action(t_stacks *stack, char *input);
+void		execute_action(t_data *stack, char *input);
 
 #endif

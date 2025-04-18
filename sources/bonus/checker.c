@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 14:05:15 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/19 02:10:36 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/19 03:25:43 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	main(int argc, char *argv[])
 {
-	char		*input;
-	t_stacks	stack;
+	char	*input;
+	t_data	stack;
 
-	init_stacks(&stack, argc, argv);
+	init_stack(&stack, argc, argv);
 	input = get_next_line(0);
 	while (input)
 	{
@@ -31,7 +31,7 @@ int	main(int argc, char *argv[])
 		clear_program(&stack, "OK", EXIT_SUCCESS);
 }
 
-void	execute_action(t_stacks *stack, char *input)
+void	execute_action(t_data *stack, char *input)
 {
 	if (!ft_strncmp(input, "sa\n", 3))
 		push_swap(&stack->a, &stack->b, SA, true);

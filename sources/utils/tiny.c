@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 23:47:21 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/12 14:59:31 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/19 03:24:49 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	sort_five(t_stack **a, t_stack **b)
 	push_swap(a, b, PA, false);
 }
 
-void	tiny_sort(t_stacks *stack)
+void	tiny_sort(t_data *stack)
 {
 	if (stack->size == 2)
 		sort_two(&stack->a, &stack->b);

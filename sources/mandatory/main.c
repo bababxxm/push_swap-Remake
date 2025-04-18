@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:48:28 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/16 14:20:48 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/19 03:24:49 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	main(int argc, char *argv[])
 {
-	t_stacks	stack;
+	t_data	stack;
 
-	init_stacks(&stack, argc, argv);
+	init_stack(&stack, argc, argv);
 	if (!is_sorted(stack.a))
 	{
 		if (stack.size <= 5)
