@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 14:05:15 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/04/19 03:25:43 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/04/19 18:23:24 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,8 @@ void	execute_action(t_data *stack, char *input)
 	else if (!ft_strncmp(input, "rrr\n", 4))
 		push_swap(&stack->a, &stack->b, RRR, true);
 	else
+	{
+		free(input);
 		clear_program(stack, "Error", EXIT_FAILURE);
+	}
 }
